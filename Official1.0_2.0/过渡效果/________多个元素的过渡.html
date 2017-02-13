@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+<!-- <div id="app1">
+	<transition>
+		<table v-if="items.length>0">
+			
+		</table>
+		<p v-else>Sorry,no items found.</p>
+	</transition>
+</div> -->
+
+<!-- <div id="app2">
+	<transition>
+		<button v-if="isEditing" key="save">Save</button>
+		<button v-else key="edit">Edit</button>
+	</transition>
+
+	<transition>
+	  	<button v-bind:key="isEditing">
+	    	{{ isEditing ? 'Save' : 'Edit' }}
+	  	</button>
+	</transition>
+</div> -->
+
+<!-- <div id="app3">
+	<transition>
+	  	<button v-if="docState === 'saved'" key="saved">
+	    	Edit
+	  	</button>
+	  	<button v-if="docState === 'edited'" key="edited">
+	    	Save
+	  	</button>
+	  	<button v-if="docState === 'editing'" key="editing">
+	   	 	Cancel
+	  	</button>
+	</transition>
+</div> -->
+
+<div id="app4">
+	<!-- ????????????? -->
+	<transition>
+	  	<button v-bind:key="docState">
+	    	{{ docState }}
+	  	</button>
+	</transition>
+</div>
+<script>
+/*new Vue({
+	el:'#app1',
+	data:{
+		items:['a']
+	}
+})*/
+/*var app2 = new Vue({
+	el:'#app2',
+	data:{
+		isEditing:true
+	}
+})*/
+
+var app4 = new Vue({
+	el:'#app4',
+	data:{
+		docState:true
+	},
+	computed:{
+		buttonMessage:function(){
+			switch (docState) {
+				case 'saved': return 'Edit'
+				case 'edited': return 'Save'
+				case 'editing': return 'Cancel'
+			}
+		}
+	}
+})
+</script>
+</body>
+</html>

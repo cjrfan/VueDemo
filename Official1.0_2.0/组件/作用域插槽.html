@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+	<my-awesome-list :items="items">
+		<!-- 作用域插槽也可以在这里命名 -->
+		<template slot="item" scope="props">
+			<li class="my-fancy-item">{{props.text}}</li>
+		</template>
+	</my-awesome-list>
+</div>
+<script>
+Vue.component('my-awesome-list',{
+	template:'\
+		<ul>\
+  			<slot name="item"\
+    			v-for="item in items"\
+    			:text="item.text">\
+    			<!-- fallback content here -->\
+  			</slot>\
+		</ul>\
+	',
+	props:['items']
+})
+new Vue({
+	el:'#app',
+	data:{
+		items:[
+			{text:'react.js'},
+			{text:'vue.js'},
+			{text:'angular.js'},
+			{text:'bootstrap'},
+		]
+	}
+})
+</script>
+</body>
+</html>

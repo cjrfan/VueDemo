@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+<div id="app9">
+	<!-- 当选中时，`picked` 为字符串 "a" -->
+	<input id="radio" type="radio" v-model="picked" value="a">
+	<label for="radio">picked: {{ picked }}</label>
+	<br>
+	<!-- `toggle` 为 true 或 false -->
+	<input id="checkbox" type="checkbox" v-model="toggle">
+	<label for="checkbox">{{ toggle }}</label>
+	<br>
+	<!-- 当选中时，`selected` 为字符串 "abc" -->
+	<select v-model="selected">
+		<option value="abc">ABC</option>
+	</select>
+	<span>select msg: {{selected}} </span>
+</div>
+<div id="app10">
+	<input id="checkbox2" type="checkbox" v-model="toggle" v-bind:true-value="a" v-bind:false-value="b">
+	<label for="checkbox2">{{ toggle }}</label>
+</div>
+<div id="app11">
+	<input id="r1" type="radio" v-model="pick" v-bind:value="a">
+	<label for="r1">{{pick}}</label>
+</div>
+<div id="app12">
+	<select v-model="selected">
+		<!-- 内联对象字面量 -->
+		<option v-bind:value="{num:123}">123</option>
+	</select>
+	<span>{{selected}}</span>
+</div>
+<script>
+var app9 = new Vue({
+	el:'#app9',
+	data:{
+		picked:'',
+		toggle:false,
+		selected:''
+	}
+})
+
+var app10 = new Vue({
+	el:'#app10',
+	data:{
+		toggle:'',
+		a:'aaaaaa',
+		b:'bbbbbb'
+	}
+})
+
+var app11 = new Vue({
+	el:'#app11',
+	data:{
+		pick:'',
+		a:123
+	}
+})
+
+var app12 = new Vue({
+	el:'#app12',
+	data:{
+		selected:''
+	}
+})
+</script>
+</body>
+</html>

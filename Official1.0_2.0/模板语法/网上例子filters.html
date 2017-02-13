@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="kk">
+	    <div>直接输出文本：{{msg}}</div>
+	    <div>自定义过滤器输出文本：{{msg|capitalize}}</div>
+	    <div v-text="msg"></div>
+
+	    <div v-html="msg"></div>
+
+	    <div v-once>不会更新的msg：{{msg}}</div>
+
+	    <div>使用 JavaScript 表达式:{{msg + 1}}</div>
+	    <div>使用 JavaScript 表达式: {{msg == 'hello' ? 'isHello' : 'isHi'}}</div>
+
+	    指令：
+	    <button v-if="btnIsShow">按钮是否显示</button>
+	    <button v-bind:disabled="btnIsDisabled">按钮是否禁用</button>
+	    <button v-bind:id="btnId" v-bind:title="btnTitle">{{ btnTitle }}</button>
+	    <button :title="btnTitle">{{ btnTitle }}</button>
+
+	    <a v-on:click="onAClick" v-bind:href="url">aaa</a>
+	    <a @click="onAClick">aaa</a>
+	</div>
+	<script type="text/javascript">
+	    var data = { msg: 'hello<em>!!</em>', btnId:'myBtn', btnTitle: '标题文字', btnIsDisabled: true, btnIsShow: false, url:'http://jd.com' }
+	    var vm = new Vue({
+	        el: '#kk',
+	        data: data,
+	        methods: {
+	            onAClick: function () {
+	                console.log('点击了按钮');
+	            }
+	        },
+	        filters: {
+	            capitalize: function (value) {
+	                if (!value) return ''
+	                value = value.toString()
+	                return value.charAt(0).toUpperCase() + value.slice(1)
+	            }
+	        }
+	    })
+	</script>
+</body>
+</html>

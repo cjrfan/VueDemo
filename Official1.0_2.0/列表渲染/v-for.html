@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-for</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+<ul id="app1">
+	<li v-for="item in items">
+		{{item.msg}}
+	</li>
+</ul>
+
+<ul id="app2">
+	<li v-for="(item,index) in items">
+		{{presentMsg}} - {{index}} - {{item.msg}}
+	</li>
+</ul>
+
+<ul id="app3">
+	<template v-for="item in items">
+		<li>{{ item.msg }}</li>
+		<li class="divider"></li>
+	</template>
+</ul>
+
+<ul id="app4">
+	<li v-for="(value,key,index) in object">
+		{{index}} - {{key}} - {{value}}
+	</li>
+</ul>
+<script>
+var app1 = new Vue({
+	el:'#app1',
+	data:{
+		items:[
+			{msg:'html5'},
+			{msg:'css3'},
+			{msg:'javascript'},
+			{msg:'jquery'}
+		]
+	}
+});
+
+var app2 = new Vue({
+	el:'#app2',
+	data:{
+		presentMsg:'前端',
+		items:[
+			{msg:'html5'},
+			{msg:'css3'},
+			{msg:'javascript'},
+			{msg:'jquery'}
+		]
+	}
+});
+
+var app3 = new Vue({
+	el:'#app3',
+	data:{
+		presentMsg:'前端',
+		items:[
+			{msg:'html5'},
+			{msg:'css3'},
+			{msg:'javascript'},
+			{msg:'jquery'}
+		]
+	}
+});
+
+var app4 = new Vue({
+	el:'#app4',
+	data:{
+		object:{
+			name:'Jack',
+			sex:'男',
+			age:24,
+		}
+	}
+})
+</script>
+</body>
+</html>

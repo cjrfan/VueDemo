@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+<input id="app1" v-model="value" v-on:keyup.enter="consoleLog">
+<script>
+var app1 = new Vue({
+	el:'#app1',
+	data:{
+		value:''
+	},
+	methods:{
+		consoleLog:function(){
+			console.log(this.value);
+			this.value='';
+		}
+	}
+});
+</script>
+</body>
+</html>

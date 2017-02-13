@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+<div id="app1">
+	<comp1 v-bind:initial-counter="counter"></comp1>
+</div>
+
+<div id="app2">
+	<comp2 v-bind:size="size"></comp2>
+</div>
+<script>
+/*Vue.component('comp1',{
+	template:'<span>{{counter}}</span>',
+	props:['initialCounter'],
+	data:function(){
+		return {counter:this.initialCounter+11}
+	},
+})
+var vm1 = new Vue({
+	el:'#app1',
+	data:{
+		counter:123
+	}
+})*/
+
+
+Vue.component('comp2',{
+	props:['size'],
+	template:'<span>{{normalizedSize}}</span>',
+	computed:{
+		normalizedSize:function(){
+			return this.size.trim().toLowerCase();
+		}
+	}
+})
+var vm2 = new Vue({
+	el:'#app2',
+	data:{
+		size:'S M L XL XXL'
+	}
+})
+</script>
+</body>
+</html>

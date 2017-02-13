@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+	</style>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>Original message: "{{ message }}"</p>
+		<!-- <p>Computed reversed message: "{{ reversedMsg }}"</p> -->
+		<p>Computed reversed message: "{{ reversedMsg() }}"</p>
+	</div>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				message:'Hello'
+			},
+			/*computed:{
+				// 一个计算属性的 getter
+				reversedMsg:function(){
+					// `this` 指向 vm 实例
+					return this.message.split('').reverse().join('');
+				}
+			},*/
+			methods:{
+				reversedMsg:function(){
+					return this.message.split('').reverse().join('');
+				}
+			}
+		});
+	</script>
+</body>
+</html>

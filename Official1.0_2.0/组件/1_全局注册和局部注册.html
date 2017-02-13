@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+<div id="app1">
+	<my-component></my-component>
+</div>
+<div id="app2">
+	<new-component></new-component>
+</div>
+
+<table id="app3">
+	<tr is="tr-component"></tr>
+</table>
+<script>
+// 注册
+Vue.component('my-component',{
+	template:'<div>A custom component!</div>'
+});
+// 创建根实例
+new Vue({
+	el:'#app1'
+});
+
+var Child = {
+	template:'<h3>Another custom component</h3>'
+};
+new Vue({
+	el:'#app2',
+	components:{
+		// new-component 将只在父模板可用
+		'new-component':Child
+	}
+})
+
+Vue.component('tr-component',{
+	template:'<tr>A custom component!</tr>'
+});
+new Vue({
+	el:'#app3'
+});
+</script>
+</body>
+</html>

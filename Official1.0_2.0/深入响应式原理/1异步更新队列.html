@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+<!-- <div id="app">
+	{{msg}}
+</div> -->
+
+<div id="app2">
+	<comp></comp>
+</div>
+<script>
+/*var vm = new Vue({
+	el:'#app',
+	data:{
+		msg:'123'
+	}
+})
+vm.msg = 'new msg';//更改数据
+vm.$el.textContent === 'new msg';//false
+Vue.nextTick(function(){
+	vm.$el.textContent === 'new msg';//true
+})*/
+
+
+Vue.component('comp',{
+	template:'<div><span>{{msg}}</span><button v-on:click="updateMsg">updateMsg</button></div>',
+	data:function(){
+		return {
+			msg:'not updated'
+		}
+	},
+	methods:{
+		updateMsg:function(){
+			this.msg = 'updated';
+			console.log(this.$el.textContent);// => '没有更新'
+			this.$nextTick(function(){
+				console.log(this.$el.textContent);// => '更新完成'
+			})
+		}
+	}
+})
+var vm = new Vue({
+	el:'#app2',
+	data:{
+		msg:'123'
+	}
+})
+</script>
+</body>
+</html>

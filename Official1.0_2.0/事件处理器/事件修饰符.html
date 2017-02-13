@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+<!-- 阻止单击事件冒泡 -->
+<a id="app1" v-on:click.stop="doThis">阻止单击事件冒泡</a>
+<!-- 提交事件不再重载页面 -->
+<!-- <form v-on:submit.prevent="onSubmit">提交事件不再重载页面</form> -->
+<!-- 修饰符可以串联  -->
+<a id="app3" v-on:click.stop.prevent="doThat">修饰符可以串联</a>
+<!-- 只有修饰符 -->
+<!-- <form v-on:submit.prevent>只有修饰符</form> -->
+<!-- 添加事件侦听器时使用事件捕获模式 -->
+<div id="app5" v-on:click.capture="doThis">添加事件侦听器时使用事件捕获模式</div>
+<!-- 只当事件在该元素本身（而不是子元素）触发时触发回调 -->
+<div id="app6" v-on:click.self="doThat">只当事件在该元素本身（而不是子元素）触发时触发回调 </div>
+<script>
+var app1 = new Vue({
+	el:'#app1',
+	methods:{
+		doThis:function(){
+			alert('阻止单击事件冒泡');
+		}
+	}
+})
+
+var app6 = new Vue({
+	el:'#app6',
+	methods:{
+		doThat:function(){
+			alert('只当事件在该元素本身（而不是子元素）触发时触发回调');
+		}
+	}
+})
+
+document.onclick = function(){
+	alert('aaa');
+}
+</script>	
+</body>
+</html>

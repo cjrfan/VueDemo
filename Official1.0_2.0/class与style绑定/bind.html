@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app1" v-bind:class="classObj"></div>
+	<div id="app2" v-bind:class="[activeClass,errorClass]"></div>
+	<div id="app3" v-bind:class="[isActive ? activeClass : '',errorClass]"></div>
+	<div id="app4" v-bind:class="[{active:isActive},errorClass]"></div>
+	
+	<div id="app5" v-bind:class="{'a':isA,'b':isB}"></div>
+	<script>
+	var app1 = new Vue({
+		el:'#app1',
+		data:{
+			isActive:true,
+			error:null
+		},
+		computed:{
+			classObj:function(){
+				return {
+					active:this.isActive && !this.error,
+					'text-danger':this.error && this.error.type === 'fatal'
+				}
+			}
+		}
+	});
+
+	var app2 = new Vue({
+		el:'#app2',
+		data:{
+			activeClass:'active',
+			errorClass:'text-danger'
+		}
+	});
+
+	var app3 = new Vue({
+		el:'#app3',
+		data:{
+			isActive:true,
+			activeClass:'active',
+			errorClass:'error'
+		}
+	});
+
+	var app4 = new Vue({
+		el:'#app4',
+		data:{
+			isActive:true,
+			activeClass:'active',
+			errorClass:'error'
+		}
+	});
+
+	var app5 = new Vue({
+		el:'#app5',
+		data:{
+			isA:true,
+			isB:false
+		}
+	})
+	</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app1">
+		<template v-if="loginType==='username'">
+			<label for="">Username</label>
+			<input placeholder="enter your username" key="username-input">
+		</template>
+		<template v-else>
+			<label for="">Email</label>
+			<input placeholder="enter your email address" key="email-input">
+		</template>
+		<br/>
+		<input v-on:click="toggleLoginType" type="button" value="toggle login type">
+	</div>
+
+	<script>
+	var app1 = new Vue({
+		el:'#app1',
+		data:{
+			loginType:'username'
+		},
+		methods:{
+			toggleLoginType:function(){
+				if (this.loginType==='username') {
+					this.loginType='';
+				}else{
+					this.loginType='username';
+				}
+			}
+		}
+	});
+	</script>
+</body>	
+</html>

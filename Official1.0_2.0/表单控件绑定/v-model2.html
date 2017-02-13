@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+<div id="app5">
+	<input type="radio" id="one" value="One" v-model="picked">
+	<label for="one">One</label>
+	<br>
+	<input type="radio" id="two" value="Two" v-model="picked">
+	<label for="two">Two</label>
+	<br>
+	<span>Picked: {{ picked }}</span>
+</div>
+<div id="app6">
+	<select v-model="selected">
+		<option>A</option>
+		<option>B</option>
+		<option>C</option>
+	</select>
+	<span>Selected: {{ selected }}</span>
+</div>
+
+<div id="app7">
+	<select v-model="selected" multiple>
+		<option>A</option>
+		<option>B</option>
+		<option>C</option>
+	</select>
+	<br>
+	<span>Selected: {{ selected }}</span>
+</div>
+
+<div id="app8">
+	<select v-model="selected">
+		<option v-for="option in options" v-bind:value="option.value">
+			{{option.text}}
+		</option>
+	</select>
+	<span>Selected: {{ selected }}</span>
+</div>
+
+
+<script>
+var app5 = new Vue({
+	el:'#app5',
+	data:{
+		picked:''
+	}
+})
+var app6 = new Vue({
+	el:'#app6',
+	data:{
+		selected:''
+	}
+})
+
+var app7 = new Vue({
+	el:'#app7',
+	data:{
+		selected:[]
+	}
+})
+
+var app8 = new Vue({
+	el:'#app8',
+	data:{
+		options:[
+			{text:'One',value:'A'},
+			{text:'Two',value:'B'},
+			{text:'Three',value:'C'}
+		],
+		selected:''
+	}
+})
+</script>
+</body>
+</html>

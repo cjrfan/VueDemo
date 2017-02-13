@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.bg{
+			width: 100px;
+			height: 50px;
+			background-color: red;
+		}
+	</style>
+	<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<!-- <div id="app">{{msg}}</div>
+	<div id="app2" v-once>{{msg}}</div>
+	<div id="app3" v-html="msg"></div>
+	<div id="app4" v-bind:class="dynamicId">
+		<a v-bind:href="url">百度一下</a>
+	</div>
+	<button id="app5" v-bind:disabled="condition">button</button> -->
+	<div id="app6">{{ msg | capitalize }}</div>
+	<script>
+		// var app1 = new Vue({
+		// 	el:'#app',
+		// 	data:{
+		// 		msg:'hello vue.js'
+		// 	}
+		// });
+		// var app2 = new Vue({
+		// 	el:'#app2',
+		// 	data:{
+		// 		msg:'hello vue.js'
+		// 	}
+		// });
+		// var app3 = new Vue({
+		// 	el:'#app3',
+		// 	data:{
+		// 		msg:'<i>hello vue.js</i>'
+		// 	}
+		// });
+		// var app4 = new Vue({
+		// 	el:'#app4',
+		// 	data:{
+		// 		dynamicId:'bg',
+		// 		url:'http://www.baidu.com'
+		// 	}
+		// });
+		// var app5 = new Vue({
+		// 	el:'#app5',
+		// 	data:{
+		// 		condition:false
+		// 	}
+		// });
+		var app6 = new Vue({
+			el:'#app6',
+			data:{
+				msg:'hello,vue.js'
+			},
+			filters:{
+				capitalize:function(val){
+					if (!val) return '';
+					val = val.toString();
+					return val.charAt(0).toUpperCase()+val.slice(1);
+				}
+			}
+			
+			
+		});
+	</script>
+</body>
+</html>
