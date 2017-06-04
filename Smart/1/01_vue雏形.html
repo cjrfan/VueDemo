@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+    <script>
+        window.onload=function () {
+            var vm = new Vue({
+                el:'#box',
+                data:{
+                    msg:'Hello Vue'
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        {{msg}}
+    </div>
+</body>
+</html>
