@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+    <script>
+        window.onload=function () {
+            var vm = new Vue({
+                el:'#box',//选择器 id class tagName
+                data:{
+                    msg:'Hello Vue',
+                    msg2:12,
+                    msg3:true,
+                    arr:['apple','banana','orange'],
+                    json:{a:'apple',b:'banana',c:'orange'}
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li v-for="name in arr">
+                {{name}} -- {{$index}}
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="item in json">
+                {{item}} -- {{$key}} -- {{$index}}
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(key,value) in json">
+                {{key}} -- {{value}} -- {{$index}} -- {{$key}}
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
