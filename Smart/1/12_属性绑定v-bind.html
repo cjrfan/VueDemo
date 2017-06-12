@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Title</title>
+    <script src="vue.js"></script>
+    <script>
+        window.onload=function () {
+            new Vue({
+                el:'#box',
+                data:{
+                    url:'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png',
+                    w:'240px',
+                    t:'这是百度的logo'
+                },
+                methods:{
+
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <!--这种方式会报404错误-->
+    <!--<img src="{{url}}" alt="">-->
+
+    <!--不会发送404请求-->
+    <img v-bind:src="url" :width="w" :title="t">
+</div>
+</body>
+</html>

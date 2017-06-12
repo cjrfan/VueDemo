@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Title</title>
+    <style>
+        .red{
+            color: red;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+    </style>
+    <script src="vue.js"></script>
+    <script>
+        window.onload=function () {
+            new Vue({
+                el:'#box',
+                data:{
+                    textColor:'red',
+                    bgColor:'yellow',
+
+                    red:true,
+                    yellow:true,
+
+                    json:{
+                        red:false,
+                        yellow:true,
+                    }
+                },
+                methods:{
+
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <!--这里[textColor,bgColor]存放的是data里的数据-->
+    <span :class="[textColor,bgColor]">这是文字.......</span>
+
+    <!--这里{}放的是类名，可以给它设置真假值，也可以在data里给它设置key的true/false，再在{}里引用-->
+    <p :class="{red:true,yellow:false}">这是一个段落.....</p>
+    <p :class="{red:true,yellow:true}">这是一个段落.....</p>
+    <p :class="{red:red,yellow:false}">这是一个段落.....</p>
+
+    <!--直接在data里写json-->
+    <div :class="json">这是一个div.....................</div>
+</div>
+</body>
+</html>

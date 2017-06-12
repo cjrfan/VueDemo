@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Title</title>
+    <style>
+        .red{
+            color: red;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+    </style>
+    <script src="vue.js"></script>
+    <script>
+        window.onload=function () {
+            new Vue({
+                el:'#box',
+                data:{
+                    textColor:{
+                        color:'skyblue',
+                        fontSize:'25px'
+                    },
+                    bgColor:{
+                        backgroundColor:'red'
+                    },
+                    json:{
+                        color:'white',
+                        backgroundColor:'#000',
+                        textAlign:'center'
+                    }
+                },
+                methods:{
+
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <!--这里[textColor,bgColor]存放的是data里的数据，数据以json方式写-->
+    <span :style="[textColor,bgColor]">这是文字.......</span>
+
+    <!--这里{}放的是平常我们写的css样式-->
+    <p :style="{color:'red',fontSize:'30px'}">这是一个段落.....</p>
+    <p :style="{backgroundColor:'gray'}">这是一个段落.....</p>
+
+    <!--直接在data里写json-->
+    <div :style="json">这是一个div.....................</div>
+</div>
+</body>
+</html>

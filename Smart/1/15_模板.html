@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Title</title>
+    <style>
+        .red{
+            color: red;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+    </style>
+    <script src="vue.js"></script>
+    <script>
+        window.onload=function () {
+            new Vue({
+                el:'#box',
+                data:{
+                    msg:'abc'
+                },
+                methods:{
+
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <input type="text" v-model="msg">
+    <br>
+    <!--数据更新模板变化-->
+    {{msg}}
+    <br>
+    <!--数据只绑定一次-->
+    {{*msg}}
+    <br>
+    <!--HTML转义输出-->
+    {{{msg}}}
+    <br>
+    {{'abcdefg'}}
+</div>
+</body>
+</html>
