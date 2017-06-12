@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Title</title>
+    <script src="vue.js"></script>
+    <script>
+        window.onload=function () {
+            new Vue({
+                el:'#box',
+                data:{
+
+                },
+                methods:{
+                    show:function (ev) {
+//                        阻止默认事件第一种方式
+//                        ev.preventDefault();
+                        alert(1);
+                    },
+
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <!--阻止默认事件第二种方式-->
+    <button @contextmenu.prevent="show($event)">按钮</button>
+</div>
+</body>
+</html>
