@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Title</title>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <script src="lib/jquery-1.7.2.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="vue.js"></script>
+    <script src="vue-resource.js"></script>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+        .blue{
+            background-color: #3385ff;
+            color:#fff;
+        }
+        .form-group{
+            margin-bottom: -1px;
+        }
+    </style>
+    <script>
+        window.onload=function () {
+            var vm = new Vue({
+                el:'.container',
+                data:{
+                    myData:[],
+                    t1:'',
+                    currentIndex:-1
+                },
+                methods:{
+                    jsonp:function (ev) {
+                        if (ev.keyCode==38||ev.keyCode==40)return;
+                        if (ev.keyCode==13){
+                            window.open('https://www.baidu.com/s?wd='+this.t1);
+                            this.t1='';
+                        }
+
+                        this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',{
+                            wd:this.t1
+                        },{
+                            jsonp:'cb'
+                        }).then(function (res) {
+                            console.log(res.data.s)
+                            this.myData=res.data.s;
+                        },function (res) {
+                            console.log(res.status)
+                        })
+                    },
+
+                    changeDown:function () {
+                        this.currentIndex++;
+                        if (this.currentIndex==this.myData.length){
+                            this.currentIndex=-1;
+                        }
+                        this.t1=this.myData[this.currentIndex];
+                    },
+
+                    changeUp:function () {
+                        this.currentIndex--;
+                        if (this.currentIndex==-2){
+                            this.currentIndex=this.myData.length-1;
+                        }
+                        this.t1=this.myData[this.currentIndex];
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-group">
+            <input type="text" class="form-control" v-model="t1" @keyup="jsonp($event)" @keydown.down="changeDown()" @keydown.up.prevent="changeUp()">
+        </div>
+
+        <div class="list-group">
+            <a class="list-group-item" v-for="val in myData" v-cloak :class="{active:$index==currentIndex}">
+                {{val}}
+            </a>
+        </div>
+        <p v-show="myData.length==0">暂无数据.....</p>
+    </div>
+</body>
+</html>
