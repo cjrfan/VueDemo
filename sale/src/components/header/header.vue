@@ -1,9 +1,13 @@
 <template>
-
+  <div class="header">
+    我是header111
+  </div>
 </template>
-<script type="text/ecmascript-6">
 
+<script type="text/ecmascript-6">
+  export default{};
 </script>
-<style lang="stylus" type="stylesheet/stylus">
+
+<style lang="stylus" rel="stylesheet/stylus">
 
 </style>
