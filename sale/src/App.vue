@@ -1,24 +1,38 @@
 <template>
   <div id="app">
-    <header></header>
+    <v-header></v-header>
     <div class="tab">
-      tab
+      <div class="tab-item">商品</div>
+      <div class="tab-item">评论</div>
+      <div class="tab-item">商家</div>
     </div>
     <div class="content">
-      content
+      I am content!
     </div>
   </div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
   import header from './components/header/header.vue';
 
   export default{
     components: {
-      'header': header
+      'v-header': header
     }
   };
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
+  #app
+    .tab
+      /*移动端常用等分布局*/
+      display: flex
+      width: 100%
+      /*移动端大小是网页端的2倍*/
+      height: 40px
+      line-height: 40px;
+      .tab-item
+        flex: 1
+        text-align: center
+
 
 </style>
